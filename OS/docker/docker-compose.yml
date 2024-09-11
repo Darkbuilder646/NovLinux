@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  lfs:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - lfs-volume:/mnt/lfs
+    tty: true
+    stdin_open: true
+
+volumes:
+  lfs-volume:

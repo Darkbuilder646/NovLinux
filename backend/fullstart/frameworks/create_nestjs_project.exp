@@ -1,0 +1,20 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+
+# Arguments
+set project_path [lindex $argv 0]
+set project_name [lindex $argv 1]
+
+# Change to the project path
+cd $project_path
+
+# Run the NestJS CLI command
+spawn npx @nestjs/cli new $project_name --skip-install
+
+# Expect the package manager question and send "npm"
+expect "Which package manager would you ❤️  to use?"
+send "npm\r"
+
+# Wait for the process to complete
+expect eof
